@@ -1,26 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/river/Navbar";
+import { Hero } from "@/components/river/Hero";
+import { Features } from "@/components/river/Features";
+import { About } from "@/components/river/About";
+import { Architecture } from "@/components/river/Architecture";
+import { Roadmap } from "@/components/river/Roadmap";
+import { Footer } from "@/components/river/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "River — An in-memory data store built in Rust" },
+      { name: "description", content: "River is an experimental Redis-inspired in-memory data store written from scratch in Rust. Fast, lightweight, and built to learn systems programming." },
+      { property: "og:title", content: "River — In-memory data store in Rust" },
+      { property: "og:description", content: "Fast. Lightweight. Experimental. Built to explore systems programming from the ground up." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main style={{ minHeight: "100vh" }}>
+      <Navbar />
+      <Hero />
+      <Features />
+      <About />
+      <Architecture />
+      <Roadmap />
+      <Footer />
+    </main>
+  );
 }

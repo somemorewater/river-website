@@ -63,14 +63,24 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  /* River — dark by default */
+  --background: oklch(0.16 0.02 250);
+  --foreground: oklch(0.97 0.01 240);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.78 0.16 220);
+  --primary-foreground: oklch(0.15 0.02 250);
+  --accent-cyan: oklch(0.85 0.14 200);
+  --accent-blue: oklch(0.7 0.18 240);
+  --surface: oklch(0.21 0.02 250);
+  --surface-2: oklch(0.25 0.025 250);
+  --muted-fg: oklch(0.7 0.02 250);
+  --border-soft: oklch(1 0 0 / 8%);
+  --glow: 0 0 40px oklch(0.78 0.16 220 / 0.35);
+  --glow-strong: 0 0 80px oklch(0.78 0.16 220 / 0.5);
+  --gradient-river: linear-gradient(135deg, oklch(0.7 0.18 240), oklch(0.85 0.14 200));
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
@@ -141,4 +151,152 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+/* ============== River custom styles ============== */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.7 0.18 240 / 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, oklch(0.85 0.14 200 / 0.12), transparent 60%),
+    var(--background);
+  background-attachment: fixed;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: oklch(0.16 0.02 250); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, oklch(0.7 0.18 240 / 0.5), oklch(0.85 0.14 200 / 0.5));
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: oklch(0.78 0.16 220 / 0.8); }
+
+/* Mono font for terminal */
+.river-mono {
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* Grid background */
+.river-grid {
+  background-image:
+    linear-gradient(oklch(0.78 0.16 220 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.78 0.16 220 / 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+}
+
+/* Noise overlay */
+.river-noise::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6  0 0 0 0 0.8  0 0 0 0 1  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.5; pointer-events: none; mix-blend-mode: overlay;
+}
+
+/* Glow utilities */
+.river-glow { box-shadow: var(--glow); }
+.river-glow-strong { box-shadow: var(--glow-strong); }
+
+.river-gradient-text {
+  background: var(--gradient-river);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.river-card {
+  position: relative;
+  background: linear-gradient(180deg, oklch(0.22 0.02 250 / 0.7), oklch(0.18 0.02 250 / 0.5));
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.river-card:hover {
+  transform: translateY(-3px);
+  border-color: oklch(0.78 0.16 220 / 0.4);
+  box-shadow: 0 0 0 1px oklch(0.78 0.16 220 / 0.2), 0 10px 40px -10px oklch(0.7 0.18 240 / 0.4);
+}
+
+.river-glass {
+  background: oklch(0.2 0.02 250 / 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-soft);
+}
+
+.river-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px; border-radius: 10px; font-weight: 500; font-size: 14px;
+  transition: transform .2s ease, box-shadow .3s ease, background .3s ease;
+  cursor: pointer; text-decoration: none;
+}
+.river-btn-primary {
+  background: var(--gradient-river);
+  color: oklch(0.12 0.02 250);
+  box-shadow: 0 0 0 1px oklch(0.85 0.14 200 / 0.5), 0 8px 30px -6px oklch(0.7 0.18 240 / 0.6);
+}
+.river-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px oklch(0.85 0.14 200 / 0.7), 0 12px 40px -6px oklch(0.7 0.18 240 / 0.8); }
+.river-btn-secondary {
+  background: oklch(0.22 0.02 250 / 0.6);
+  border: 1px solid var(--border-soft);
+  color: var(--foreground);
+}
+.river-btn-secondary:hover { border-color: oklch(0.78 0.16 220 / 0.5); background: oklch(0.25 0.025 250 / 0.8); }
+
+/* Flowing river animation */
+@keyframes river-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.river-flow-bg {
+  background: linear-gradient(90deg,
+    transparent,
+    oklch(0.7 0.18 240 / 0.15),
+    oklch(0.85 0.14 200 / 0.2),
+    oklch(0.7 0.18 240 / 0.15),
+    transparent);
+  background-size: 200% 100%;
+  animation: river-flow 8s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+/* Architecture connector */
+.arch-line {
+  width: 2px; height: 40px;
+  background: linear-gradient(180deg, oklch(0.85 0.14 200 / 0.8), oklch(0.7 0.18 240 / 0.2));
+  margin: 0 auto;
+  position: relative;
+}
+.arch-line::after {
+  content: ''; position: absolute; left: -3px; top: -2px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: oklch(0.85 0.14 200);
+  box-shadow: 0 0 12px oklch(0.85 0.14 200);
+  animation: flow-down 2.5s linear infinite;
+}
+@keyframes flow-down {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(40px); opacity: 0; }
+}
+
+/* Container helper */
+.river-container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* Section titles */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: oklch(0.85 0.14 200);
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid oklch(0.85 0.14 200 / 0.3);
+  background: oklch(0.85 0.14 200 / 0.06);
 }
