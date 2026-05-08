@@ -33,13 +33,14 @@ export function Navbar() {
             <span style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>River</span>
             <span className="river-mono" style={{ fontSize: 11, color: "var(--muted-fg)", marginLeft: 4 }}>v0.1</span>
           </a>
-          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <div style={{ display: "none", gap: 24 }} className="nav-links">
-              <a href="#features" className="nav-link">Features</a>
-              <a href="#about" className="nav-link">About</a>
-              <a href="#architecture" className="nav-link">Architecture</a>
-              <a href="#roadmap" className="nav-link">Roadmap</a>
-            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+              <div style={{ display: "none", gap: 24 }} className="nav-links">
+                <a href="#features" className="nav-link">Features</a>
+                <a href="#about" className="nav-link">About</a>
+                <a href="#tradeoffs" className="nav-link">Tradeoffs</a>
+                <a href="#architecture" className="nav-link">Architecture</a>
+                <a href="#roadmap" className="nav-link">Roadmap</a>
+              </div>
             <a href="https://github.com" target="_blank" rel="noreferrer" className="river-btn river-btn-secondary" style={{ padding: "8px 14px" }}>
               <Github size={15} /> GitHub
             </a>
@@ -47,7 +48,7 @@ export function Navbar() {
         </div>
       </div>
       <style>{`
-        @media (min-width) {
+        @media (min-width: 768px) {
           .nav-links { display: flex !important; }
         }
         .nav-link {
