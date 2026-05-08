@@ -29,7 +29,7 @@ export function Hero() {
           style={{ marginTop: 18 }}
         >
           <picture>
-            <source srcSet={logoLight} media="(prefers-color-scheme: light)" />
+            <source srcSet={logoDark} media="(prefers-color-scheme: light)" />
             <img
               src={logoDark}
               alt="River"
@@ -90,7 +90,12 @@ export function Hero() {
           <a href="#about" className="river-btn river-btn-primary">
             View Documentation <ArrowRight size={15} />
           </a>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="river-btn river-btn-secondary">
+          <a
+            href="https://github.com/somemorewater/river"
+            target="_blank"
+            rel="noreferrer"
+            className="river-btn river-btn-secondary"
+          >
             <Github size={15} /> GitHub
           </a>
         </motion.div>

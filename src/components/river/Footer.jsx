@@ -14,7 +14,13 @@ export function Footer() {
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="nav-link" style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <a
+            href="https://github.com/somemorewater/river"
+            target="_blank"
+            rel="noreferrer"
+            className="nav-link"
+            style={{ display: "flex", alignItems: "center", gap: 6 }}
+          >
             <Github size={14} /> GitHub
           </a>
           <span style={{ fontSize: 12, color: "var(--muted-fg)" }}>© {new Date().getFullYear()} River</span>

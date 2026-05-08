@@ -41,7 +41,13 @@ export function Navbar() {
                 <a href="#architecture" className="nav-link">Architecture</a>
                 <a href="#roadmap" className="nav-link">Roadmap</a>
               </div>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="river-btn river-btn-secondary" style={{ padding: "8px 14px" }}>
+            <a
+              href="https://github.com/somemorewater/river"
+              target="_blank"
+              rel="noreferrer"
+              className="river-btn river-btn-secondary"
+              style={{ padding: "8px 14px" }}
+            >
               <Github size={15} /> GitHub
             </a>
           </div>
