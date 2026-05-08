@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Github } from "lucide-react";
 import { Terminal } from "./Terminal";
 
+import logoDark from "@/assets/river-full-logo-dark-mode.png";
+import logoLight from "@/assets/river-logo-light-mode.png";
+
 export function Hero() {
   return (
     <section id="top" className="river-noise" style={{ position: "relative", paddingTop: 160, paddingBottom: 100, overflow: "hidden" }}>
@@ -17,6 +20,27 @@ export function Hero() {
           transition={{ duration: 0.6 }}
         >
           <span className="section-eyebrow">v0.1 · Experimental · Open Source</span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.05 }}
+          style={{ marginTop: 18 }}
+        >
+          <picture>
+            <source srcSet={logoLight} media="(prefers-color-scheme: light)" />
+            <img
+              src={logoDark}
+              alt="River"
+              style={{
+                height: 44,
+                width: "auto",
+                display: "inline-block",
+                filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.35))",
+              }}
+            />
+          </picture>
         </motion.div>
 
         <motion.h1

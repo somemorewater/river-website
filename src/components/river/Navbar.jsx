@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Waves, Github } from "lucide-react";
+import { Github } from "lucide-react";
+
+import riverIcon from "@/assets/river-icon-only.png";
 
 export function Navbar() {
   return (
@@ -21,7 +23,13 @@ export function Navbar() {
           }}
         >
           <a href="#top" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: "var(--foreground)" }}>
-            <Waves size={20} style={{ color: "oklch(0.85 0.14 200)" }} />
+            <img
+              src={riverIcon}
+              alt="River"
+              width={22}
+              height={22}
+              style={{ display: "block" }}
+            />
             <span style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>River</span>
             <span className="river-mono" style={{ fontSize: 11, color: "var(--muted-fg)", marginLeft: 4 }}>v0.1</span>
           </a>
