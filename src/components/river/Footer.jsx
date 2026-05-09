@@ -1,4 +1,6 @@
-import { Waves, Github } from "lucide-react";
+import { Github } from "lucide-react";
+
+import riverIcon from "@/assets/river-icon-only.png";
 
 export function Footer() {
   return (
@@ -7,10 +9,32 @@ export function Footer() {
         display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <Waves size={18} style={{ color: "oklch(0.85 0.14 200)" }} />
+          <img
+            src={riverIcon}
+            alt="River"
+            width={18}
+            height={18}
+            style={{ display: "block" }}
+          />
           <span style={{ fontWeight: 600 }}>River</span>
-          <span className="river-mono" style={{ fontSize: 12, color: "var(--muted-fg)", marginLeft: 8 }}>
-            // Built in Rust 🦀
+          <span
+            className="river-mono"
+            style={{
+              fontSize: 12,
+              color: "var(--muted-fg)",
+              marginLeft: 8,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            <span>// Built in Rust</span>
+            <i
+              className="fa-brands fa-rust"
+              aria-hidden="true"
+              style={{ color: "oklch(0.85 0.14 200)", fontSize: 14, opacity: 0.95 }}
+              title="Rust"
+            />
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
