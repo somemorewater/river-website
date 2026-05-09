@@ -32,7 +32,7 @@ export function Footer() {
             <i
               className="fa-brands fa-rust"
               aria-hidden="true"
-              style={{ color: "oklch(0.85 0.14 200)", fontSize: 14, opacity: 0.95 }}
+              style={{ color: "oklch(0.85 0.14 200)", fontSize: 20, opacity: 0.95 }}
               title="Rust"
             />
           </span>
