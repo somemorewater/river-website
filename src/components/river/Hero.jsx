@@ -28,7 +28,7 @@ export function Hero() {
           style={{ marginTop: 18 }}
         >
           <picture>
-            <source srcSet={logoLight} media="(prefers-color-scheme: light)" />
+            <source srcSet={logoDark} media="(prefers-color-scheme: light)" />
             <img
               src={logoDark}
               alt="River"
