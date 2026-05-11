@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Features";
-import { User, Server, Code2, HardDrive, Send } from "lucide-react";
+import { Archive, Database, HardDrive, Layers, Server, Terminal, User } from "lucide-react";
 
 const nodes = [
   { icon: User, label: "Client", desc: "redis-cli, telnet, or any TCP client" },
-  { icon: Server, label: "TCP Server", desc: "Async listener accepting connections" },
-  { icon: Code2, label: "Command Parser", desc: "Reads RESP-style frames into commands" },
-  { icon: HardDrive, label: "Storage Engine", desc: "In-memory hashmap with thread-safe access" },
-  { icon: Send, label: "Response", desc: "Encoded reply written back over the socket" },
+  { icon: Server, label: "TCP Layer", desc: "Tokio-based listener + connection tasks" },
+  { icon: Layers, label: "RESP Parser", desc: "Frames bytes into typed requests (in progress)" },
+  { icon: Terminal, label: "Command System", desc: "Routes parsed commands into the execution layer" },
+  { icon: Database, label: "RiverStore", desc: "Shared in-memory keyspace with multi-client state" },
+  { icon: Archive, label: "Persistence Layer", desc: "Snapshots / append-style logs for durability" },
+  { icon: HardDrive, label: "Disk", desc: "On-disk state reloaded at startup" },
 ];
 
 export function Architecture() {
@@ -16,10 +18,10 @@ export function Architecture() {
       <div className="river-container">
         <SectionHeader
           eyebrow="Architecture"
-          title="From socket to storage."
-          subtitle="A single request, traced through River's pipeline."
+          title="A clean request pipeline."
+          subtitle="The current data path, modeled like infrastructure docs—not a marketing diagram."
         />
-        <div style={{ marginTop: 56, maxWidth: 480, marginLeft: "auto", marginRight: "auto" }}>
+        <div style={{ marginTop: 56, maxWidth: 520, marginLeft: "auto", marginRight: "auto" }}>
           {nodes.map((n, i) => (
             <div key={n.label}>
               <motion.div
@@ -28,7 +30,13 @@ export function Architecture() {
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="river-card"
-                style={{ display: "flex", alignItems: "center", gap: 16, padding: "18px 22px" }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 16,
+                  padding: "18px 22px",
+                  boxShadow: "0 0 0 1px oklch(0.78 0.16 220 / 0.06) inset",
+                }}
               >
                 <div style={{
                   width: 38, height: 38, borderRadius: 10, display: "grid", placeItems: "center",

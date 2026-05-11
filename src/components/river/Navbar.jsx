@@ -31,15 +31,16 @@ export function Navbar() {
               style={{ display: "block" }}
             />
             <span style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>River</span>
-            <span className="river-mono" style={{ fontSize: 11, color: "var(--muted-fg)", marginLeft: 4 }}>v0.1</span>
+            <span className="river-mono" style={{ fontSize: 11, color: "var(--muted-fg)", marginLeft: 4 }}>v0.2</span>
           </a>
             <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
               <div style={{ display: "none", gap: 24 }} className="nav-links">
-                <a href="#features" className="nav-link">Features</a>
-                <a href="#about" className="nav-link">About</a>
-                <a href="#tradeoffs" className="nav-link">Tradeoffs</a>
                 <a href="#architecture" className="nav-link">Architecture</a>
-                <a href="#roadmap" className="nav-link">Roadmap</a>
+                <a href="#features" className="nav-link">Capabilities</a>
+                <a href="#demo" className="nav-link">Demo</a>
+                <a href="#roadmap" className="nav-link">Build Log</a>
+                <a href="#tradeoffs" className="nav-link">Philosophy</a>
+                <a href="#stack" className="nav-link">Stack</a>
               </div>
             <a
               href="https://github.com/somemorewater/river"

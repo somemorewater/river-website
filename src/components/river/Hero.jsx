@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Github } from "lucide-react";
-import { Terminal } from "./Terminal";
 
 import logoDark from "@/assets/river-full-logo-dark-mode.png";
 import logoLight from "@/assets/river-logo-light-mode.png";
@@ -19,7 +18,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-eyebrow">v0.1 · Experimental · Open Source</span>
+          <span className="section-eyebrow">v0.2 · Networked · Open Source</span>
         </motion.div>
 
         <motion.div
@@ -29,7 +28,7 @@ export function Hero() {
           style={{ marginTop: 18 }}
         >
           <picture>
-            <source srcSet={logoDark} media="(prefers-color-scheme: light)" />
+            <source srcSet={logoLight} media="(prefers-color-scheme: light)" />
             <img
               src={logoDark}
               alt="River"
@@ -65,7 +64,7 @@ export function Hero() {
           className="river-mono"
           style={{ fontSize: 15, color: "oklch(0.85 0.14 200)", marginTop: 12 }}
         >
-          <span style={{ opacity: 0.6 }}>{">"}</span> An in-memory data store built in Rust.
+          <span style={{ opacity: 0.6 }}>{">"}</span> A networked key-value database built in Rust.
         </motion.p>
 
         <motion.p
@@ -77,8 +76,8 @@ export function Hero() {
             fontSize: 17, lineHeight: 1.6, color: "var(--muted-fg)",
           }}
         >
-          Fast. Lightweight. Experimental. Built to explore systems programming
-          from the ground up — one socket, one byte, one keyspace at a time.
+          A real TCP server, shared multi-client state, persistence, and runtime
+          monitoring — built to learn database internals from the wire protocol down.
         </motion.p>
 
         <motion.div
@@ -99,8 +98,6 @@ export function Hero() {
             <Github size={15} /> GitHub
           </a>
         </motion.div>
-
-        <Terminal />
       </div>
     </section>
   );

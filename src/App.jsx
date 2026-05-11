@@ -5,6 +5,8 @@ import { About } from "@/components/river/About";
 import { Tradeoffs } from "@/components/river/Tradeoffs";
 import { Architecture } from "@/components/river/Architecture";
 import { Roadmap } from "@/components/river/Roadmap";
+import { LiveDemo } from "@/components/river/LiveDemo";
+import { TechStack } from "@/components/river/TechStack";
 import { Footer } from "@/components/river/Footer";
 
 export default function App() {
@@ -13,10 +15,12 @@ export default function App() {
       <Navbar />
       <Hero />
       <Features />
-      <About />
-      <Tradeoffs />
       <Architecture />
+      <LiveDemo />
+      <About />
       <Roadmap />
+      <Tradeoffs />
+      <TechStack />
       <Footer />
     </main>
   );

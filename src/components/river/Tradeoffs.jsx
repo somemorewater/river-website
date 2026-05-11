@@ -50,7 +50,7 @@ export function Tradeoffs() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <span className="section-eyebrow">Tradeoffs · Exploration · Systems</span>
+          <span className="section-eyebrow">Philosophy · Tradeoffs · Systems</span>
         </motion.div>
 
         <div className="tradeoffs-grid">
@@ -68,13 +68,12 @@ export function Tradeoffs() {
             </div>
 
             <h2 className="tradeoffs-title">
-              Redis optimized for <span className="tradeoffs-accent">simplicity</span> and raw{" "}
-              <span className="tradeoffs-accent">speed</span>.
+              River chases <span className="tradeoffs-accent">understanding</span>, not hype.
             </h2>
             <p className="tradeoffs-subtitle">
-              River explores different ideas around memory layouts, concurrency, protocol design,
-              persistence strategies, and Rust-based systems architecture — with the goal of
-              learning in public, not picking fights.
+              The goal is to learn systems programming deeply by building a real networked database:
+              protocol framing (RESP), concurrency tradeoffs, persistence design, and observability.
+              River borrows inspiration from Redis, but stays intentionally humble and explicit about constraints.
             </p>
 
             <div className="tradeoffs-mini">
@@ -100,7 +99,7 @@ export function Tradeoffs() {
                     "Battle-tested",
                     "Mature ecosystem",
                     "Extremely optimized",
-                    "Simplicity-first architecture",
+                    "Opinionated, pragmatic design",
                   ]}
                 />
               </div>
@@ -109,10 +108,10 @@ export function Tradeoffs() {
                   title="River"
                   tone="explore"
                   points={[
-                    "Experimental architecture",
-                    "Rust-first systems design",
-                    "Learning-focused",
-                    "Exploring alternative tradeoffs",
+                    "Modular systems architecture",
+                    "Protocol + persistence experiments",
+                    "Health/stats instrumentation",
+                    "Learning-focused iteration",
                   ]}
                 />
               </div>
@@ -354,4 +353,3 @@ export function Tradeoffs() {
     </section>
   );
 }
-

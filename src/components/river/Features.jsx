@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
-import { Database, Network, Cpu, Feather } from "lucide-react";
+import { Activity, Blocks, Database, HardDrive, Network, Server, Users } from "lucide-react";
 
 const features = [
-  { icon: Database, title: "In-Memory Storage", desc: "All data lives in RAM for sub-millisecond reads and writes." },
-  { icon: Network, title: "TCP-Based Server", desc: "A simple, fast TCP listener speaking a Redis-style protocol." },
-  { icon: Cpu, title: "Built With Rust", desc: "Memory-safe, zero-cost abstractions, fearless concurrency." },
-  { icon: Feather, title: "Lightweight Architecture", desc: "Tiny binary, minimal dependencies, easy to read end-to-end." },
+  { icon: Database, title: "In-Memory Key-Value Store", desc: "A fast, shared keyspace designed for concurrent reads/writes." },
+  { icon: Server, title: "TCP Server", desc: "Async listener accepting multiple connections over a real network boundary." },
+  { icon: Users, title: "Multi-Client Support", desc: "Shared state across sessions with predictable concurrency behavior." },
+  { icon: HardDrive, title: "Persistent Disk Storage", desc: "Snapshots and append-style persistence to survive restarts." },
+  { icon: Activity, title: "Health + Stats Monitoring", desc: "Runtime signals: key count, ops, latencies, and health checks." },
+  { icon: Blocks, title: "Modular Architecture", desc: "Systems split into layers: IO, parsing, commands, storage, persistence." },
+  { icon: Network, title: "RESP Protocol Development", desc: "Redis-inspired framing with an evolving parser and command surface." },
 ];
 
 export function SectionHeader({ eyebrow, title, subtitle }) {
@@ -30,7 +33,11 @@ export function Features() {
   return (
     <section id="features" style={{ padding: "120px 0", position: "relative" }}>
       <div className="river-container">
-        <SectionHeader eyebrow="Features" title="Small surface, sharp edges." subtitle="Everything River does, it tries to do well." />
+        <SectionHeader
+          eyebrow="Current Capabilities"
+          title="What River can do today."
+          subtitle="A real server, real state, real persistence — built with an engineer's bias for clarity."
+        />
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
@@ -44,7 +51,10 @@ export function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="river-card"
-              style={{ padding: 24 }}
+              style={{
+                padding: 24,
+                boxShadow: "0 0 0 1px oklch(0.78 0.16 220 / 0.06) inset, 0 0 40px oklch(0.78 0.16 220 / 0.06)",
+              }}
             >
               <div style={{
                 width: 40, height: 40, borderRadius: 10,

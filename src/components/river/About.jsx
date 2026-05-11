@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "./Features";
 
 const points = [
-  "Learning systems programming the hard way",
-  "Understanding databases and memory stores",
-  "Exploring networking and protocol design",
-  "Inspired by Redis — built from scratch",
+  "Learning systems programming through real constraints",
+  "Studying database internals: storage, concurrency, durability",
+  "Protocol engineering: framing, parsing, compatibility",
+  "Networking architecture: backpressure, timeouts, multi-client state",
 ];
 
 export function About() {
@@ -14,8 +14,8 @@ export function About() {
       <div className="river-container">
         <SectionHeader
           eyebrow="About"
-          title="A learning project, taken seriously."
-          subtitle="River exists to demystify the layers between a TCP socket and a key-value store. Every line of code is written by hand, on purpose."
+          title="A learning project with production-shaped edges."
+          subtitle="River exists to demystify what sits between a TCP socket and a durable keyspace: protocol framing, command execution, shared state, persistence, and observability."
         />
         <motion.div
           initial={{ opacity: 0, y: 16 }}
