@@ -3,16 +3,17 @@ import { SectionHeader } from "./Features";
 import { CheckCircle2, CircleDashed, Loader2 } from "lucide-react";
 
 const timeline = [
-  { status: "done", title: "Core HashMap store", desc: "In-memory key-value engine with a clean internal API." },
-  { status: "done", title: "CLI REPL", desc: "Local loop for fast iteration on commands and edge cases." },
-  { status: "done", title: "TCP networking", desc: "Async server that accepts real client connections." },
-  { status: "done", title: "Shared state", desc: "Multi-client concurrency model with predictable behavior." },
-  { status: "done", title: "Persistence", desc: "Durability layer for restart survival (snapshots / append log)." },
-  { status: "done", title: "Health + stats system", desc: "Operational visibility: health checks + runtime counters." },
-  { status: "wip", title: "RESP protocol", desc: "Parser, framing rules, and compatibility improvements (in progress)." },
-  { status: "next", title: "Benchmarking", desc: "Measure throughput/latency and validate bottlenecks." },
-  { status: "next", title: "Replication", desc: "Primary/replica streaming for redundancy and scale testing." },
-  { status: "next", title: "Pub/Sub", desc: "Channel-based messaging with fanout semantics." },
+  { status: "done", title: "TCP server + multi-client state", desc: "Tokio listener on 127.0.0.1:2007; per-connection tasks sharing one ConcurrentStore." },
+  { status: "done", title: "RESP protocol subset", desc: "Simple / integer / bulk / array / error / null frames; pipelining and fragmented-read handling." },
+  { status: "done", title: "Command surface", desc: "SET, SETEX, GET, DEL, EXPIRE, PING, AUTH, STATS, HEALTH, EXIT/QUIT — strict arity, never panics on input." },
+  { status: "done", title: "Sharded store + TTL", desc: "Sharded async RwLock partitions; EXPIRE/SETEX with passive reads, 1s cleanup, startup purge, persisted expirations." },
+  { status: "done", title: "Snapshot persistence", desc: "serde + bincode via atomic temp-file rename to river.db; restore on restart. No AOF yet." },
+  { status: "done", title: "River CLI (REPL)", desc: "`cargo run -- cli` with human-readable output, HELP, --raw frames, RIVER_PASSWORD auto-auth." },
+  { status: "done", title: "Auth + observability", desc: "Optional single-password auth (localhost default, no TLS) plus tracing logs, STATS, HEALTH." },
+  { status: "done", title: "Benchmarks", desc: "Criterion suites: store_concurrency, store_ops, store_workloads, protocol, ttl_persistence." },
+  { status: "wip", title: "Crash recovery / durability", desc: "Partial: snapshots only. Checksums, manifests, and append-only log are future work." },
+  { status: "next", title: "INFO + richer introspection", desc: "Memory hints and persistence state beyond today's STATS/HEALTH." },
+  { status: "next", title: "Replication · transactions · Pub/Sub", desc: "Explicitly not implemented. Post-v1 ideas alongside eviction policies and HTTP diagnostics." },
 ];
 
 export function Roadmap() {
@@ -22,7 +23,7 @@ export function Roadmap() {
         <SectionHeader
           eyebrow="Build Log"
           title="Progress, not promises."
-          subtitle="A running log of what’s shipped, what’s in progress, and what’s next."
+          subtitle="Implemented means shipped and tested. Partial means snapshots-only durability. Future is future — never presented as done."
         />
         <div
           className="river-card"
@@ -122,7 +123,7 @@ export function Roadmap() {
                       }}
                     >
                       <span className="river-mono" style={{ fontSize: 12, color: "var(--muted-fg)" }}>
-                        {it.status === "done" ? "✓ shipped" : it.status === "wip" ? "→ in progress" : "· next"}
+                        {it.status === "done" ? "✓ implemented" : it.status === "wip" ? "→ partial" : "· future"}
                       </span>
                       <span style={{ fontWeight: 600, fontSize: 15, letterSpacing: "-0.01em" }}>{it.title}</span>
                     </div>

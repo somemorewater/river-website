@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Github } from "lucide-react";
 
 import logoDark from "@/assets/river-full-logo-dark-mode.png";
-import logoLight from "@/assets/river-logo-light-mode.png";
 
 export function Hero() {
   return (
@@ -18,7 +17,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-eyebrow">v0.2 · Networked · Open Source</span>
+          <span className="section-eyebrow">v0.1.0 · TCP · Experimental</span>
         </motion.div>
 
         <motion.div
@@ -64,7 +63,7 @@ export function Hero() {
           className="river-mono"
           style={{ fontSize: 15, color: "oklch(0.85 0.14 200)", marginTop: 12 }}
         >
-          <span style={{ opacity: 0.6 }}>{">"}</span> A networked key-value database built in Rust.
+          <span style={{ opacity: 0.6 }}>{">"}</span> A lightweight Redis-inspired key-value database in Rust.
         </motion.p>
 
         <motion.p
@@ -72,12 +71,23 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
           style={{
-            maxWidth: 620, margin: "20px auto 36px",
+            maxWidth: 640, margin: "20px auto 12px",
             fontSize: 17, lineHeight: 1.6, color: "var(--muted-fg)",
           }}
         >
-          A real TCP server, shared multi-client state, persistence, and runtime
-          monitoring — built to learn database internals from the wire protocol down.
+          Built to explore networking, concurrency, storage, persistence, and
+          protocol design — a real TCP server with a sharded store, TTLs,
+          snapshots, and an interactive CLI.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.55 }}
+          className="river-mono"
+          style={{ fontSize: 12.5, color: "var(--muted-fg)", marginBottom: 28 }}
+        >
+          Experimental learning project — not production-ready, not a Redis replacement.
         </motion.p>
 
         <motion.div
@@ -86,8 +96,11 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
           style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 64 }}
         >
-          <a href="#about" className="river-btn river-btn-primary">
-            View Documentation <ArrowRight size={15} />
+          <a href="#demo" className="river-btn river-btn-primary">
+            Watch the CLI <ArrowRight size={15} />
+          </a>
+          <a href="#commands" className="river-btn river-btn-secondary">
+            Command reference
           </a>
           <a
             href="https://github.com/somemorewater/river"

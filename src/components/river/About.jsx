@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "./Features";
 
 const points = [
-  "Learning systems programming through real constraints",
-  "Studying database internals: storage, concurrency, durability",
-  "Protocol engineering: framing, parsing, compatibility",
-  "Networking architecture: backpressure, timeouts, multi-client state",
+  "Networking: Tokio TCP on 127.0.0.1:2007, RESP framing, pipelining, multi-client tasks",
+  "Concurrency: sharded async RwLock store — concurrent reads across shards, per-shard writes",
+  "Storage + persistence: in-memory HashMaps with TTL metadata, bincode snapshots, crash-restore behavior",
+  "Protocol design: strict command parsing that never panics on user input",
 ];
 
 export function About() {
@@ -15,7 +15,7 @@ export function About() {
         <SectionHeader
           eyebrow="About"
           title="A learning project with production-shaped edges."
-          subtitle="River exists to demystify what sits between a TCP socket and a durable keyspace: protocol framing, command execution, shared state, persistence, and observability."
+          subtitle="River exists to demystify what sits between a TCP socket and a durable keyspace: protocol framing, command execution, shared state, persistence, and observability. Experimental — not a Redis replacement."
         />
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -27,8 +27,8 @@ export function About() {
         >
           <ul style={{ display: "grid", gap: 14, listStyle: "none", padding: 0, margin: 0 }}>
             {points.map((p) => (
-              <li key={p} style={{ display: "flex", gap: 12, alignItems: "center", fontSize: 15 }}>
-                <span className="pulse-glow" style={{ width: 8, height: 8, borderRadius: 99, background: "oklch(0.85 0.14 200)", boxShadow: "0 0 10px oklch(0.85 0.14 200)" }} />
+              <li key={p} style={{ display: "flex", gap: 12, alignItems: "flex-start", fontSize: 15, lineHeight: 1.55 }}>
+                <span className="pulse-glow" style={{ width: 8, height: 8, borderRadius: 99, background: "oklch(0.85 0.14 200)", boxShadow: "0 0 10px oklch(0.85 0.14 200)", marginTop: 7, flexShrink: 0 }} />
                 <span>{p}</span>
               </li>
             ))}

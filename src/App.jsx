@@ -6,17 +6,19 @@ import { Tradeoffs } from "@/components/river/Tradeoffs";
 import { Architecture } from "@/components/river/Architecture";
 import { Roadmap } from "@/components/river/Roadmap";
 import { LiveDemo } from "@/components/river/LiveDemo";
+import { Commands } from "@/components/river/Commands";
 import { TechStack } from "@/components/river/TechStack";
 import { Footer } from "@/components/river/Footer";
 
 export default function App() {
   return (
-    <main style={{ minHeight: "100vh" }}>
+    <main style={{ minHeight: "100vh", overflowX: "clip" }}>
       <Navbar />
       <Hero />
       <Features />
       <Architecture />
       <LiveDemo />
+      <Commands />
       <About />
       <Roadmap />
       <Tradeoffs />

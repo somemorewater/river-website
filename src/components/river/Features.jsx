@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
-import { Activity, Blocks, Database, HardDrive, Network, Server, Users } from "lucide-react";
+import { Activity, KeyRound, Network, Save, Store, TerminalSquare } from "lucide-react";
 
 const features = [
-  { icon: Database, title: "In-Memory Key-Value Store", desc: "A fast, shared keyspace designed for concurrent reads/writes." },
-  { icon: Server, title: "TCP Server", desc: "Async listener accepting multiple connections over a real network boundary." },
-  { icon: Users, title: "Multi-Client Support", desc: "Shared state across sessions with predictable concurrency behavior." },
-  { icon: HardDrive, title: "Persistent Disk Storage", desc: "Snapshots and append-style persistence to survive restarts." },
-  { icon: Activity, title: "Health + Stats Monitoring", desc: "Runtime signals: key count, ops, latencies, and health checks." },
-  { icon: Blocks, title: "Modular Architecture", desc: "Systems split into layers: IO, parsing, commands, storage, persistence." },
-  { icon: Network, title: "RESP Protocol Development", desc: "Redis-inspired framing with an evolving parser and command surface." },
+  { icon: Store, title: "Sharded In-Memory Store", desc: "HashMap<String, String> behind a sharded async RwLock layer (ConcurrentStore). Shard count via RIVER_SHARDS; no global mutex on the hot path." },
+  { icon: Network, title: "Tokio TCP + RESP", desc: "Server on 127.0.0.1:2007. RESP-inspired framing with pipelining, fragmented-frame handling, and per-client tasks for multi-client state." },
+  { icon: Save, title: "Snapshot Persistence", desc: "serde + bincode snapshots via atomic temp-file rename to river.db. Saves after SET / SETEX / DEL / EXPIRE and TTL cleanup; restores on restart." },
+  { icon: TerminalSquare, title: "River CLI (REPL)", desc: "`cargo run -- cli` speaks RESP under the hood and prints human-readable output — (nil) for missing keys, HELP locally, --raw for frame debugging." },
+  { icon: Activity, title: "Observability", desc: "tracing logs (RIVER_LOG, default info) plus STATS and HEALTH: keys, operations, uptime, per-command and connection counters." },
+  { icon: KeyRound, title: "TTL + Optional Auth", desc: "EXPIRE / SETEX with passive reads, 1s background cleanup, and startup purge. Single-password auth via RIVER_PASSWORD; localhost default, no TLS." },
 ];
 
 export function SectionHeader({ eyebrow, title, subtitle }) {
@@ -36,11 +35,11 @@ export function Features() {
         <SectionHeader
           eyebrow="Current Capabilities"
           title="What River can do today."
-          subtitle="A real server, real state, real persistence — built with an engineer's bias for clarity."
+          subtitle="Verified against the current implementation — snapshots only, no append log, no latencies claimed."
         />
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
           gap: 18, marginTop: 56,
         }}>
           {features.map((f, i) => (

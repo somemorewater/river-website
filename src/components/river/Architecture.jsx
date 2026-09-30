@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Features";
-import { Archive, Database, HardDrive, Layers, Server, Terminal, User } from "lucide-react";
+import { ArrowDown, Database, FileOutput, Network, ScanText, SquareTerminal, Users } from "lucide-react";
 
 const nodes = [
-  { icon: User, label: "Client", desc: "redis-cli, telnet, or any TCP client" },
-  { icon: Server, label: "TCP Layer", desc: "Tokio-based listener + connection tasks" },
-  { icon: Layers, label: "RESP Parser", desc: "Frames bytes into typed requests (in progress)" },
-  { icon: Terminal, label: "Command System", desc: "Routes parsed commands into the execution layer" },
-  { icon: Database, label: "RiverStore", desc: "Shared in-memory keyspace with multi-client state" },
-  { icon: Archive, label: "Persistence Layer", desc: "Snapshots / append-style logs for durability" },
-  { icon: HardDrive, label: "Disk", desc: "On-disk state reloaded at startup" },
+  { icon: Users, label: "TCP Client", desc: "River CLI, nc, telnet, or any TCP client → 127.0.0.1:2007" },
+  { icon: Network, label: "TCP Layer", desc: "Tokio listener + one task per connection (src/server/tcp.rs)" },
+  { icon: ScanText, label: "RESP + Command Parser", desc: "Framed bytes → parts → strict Command enum (src/protocol, src/commands/parser.rs)" },
+  { icon: SquareTerminal, label: "Command Execution", desc: "SET / GET / DEL / TTL / PING / AUTH / STATS / HEALTH (src/commands/mod.rs)" },
+  { icon: Database, label: "ConcurrentStore", desc: "Sharded RwLock partitions: data + expirations + 1s cleanup worker" },
+  { icon: FileOutput, label: "Snapshot Persistence", desc: "serde + bincode via atomic rename to river.db; restore + startup expiry purge" },
+  { icon: ArrowDown, label: "RESP Encoder → Response", desc: "+OK · $bulk · :int · $-1 null · -ERROR over the same socket" },
 ];
 
 export function Architecture() {
@@ -19,9 +19,9 @@ export function Architecture() {
         <SectionHeader
           eyebrow="Architecture"
           title="A clean request pipeline."
-          subtitle="The current data path, modeled like infrastructure docs—not a marketing diagram."
+          subtitle="The current data path from docs/architecture.md — parsing isolated from storage."
         />
-        <div style={{ marginTop: 56, maxWidth: 520, marginLeft: "auto", marginRight: "auto" }}>
+        <div style={{ marginTop: 56, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
           {nodes.map((n, i) => (
             <div key={n.label}>
               <motion.div
@@ -41,13 +41,13 @@ export function Architecture() {
                 <div style={{
                   width: 38, height: 38, borderRadius: 10, display: "grid", placeItems: "center",
                   background: "var(--gradient-river)", color: "oklch(0.15 0.02 250)",
-                  boxShadow: "0 0 20px oklch(0.7 0.18 240 / 0.4)",
+                  boxShadow: "0 0 20px oklch(0.7 0.18 240 / 0.4)", flexShrink: 0,
                 }}>
                   <n.icon size={18} />
                 </div>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <div style={{ fontWeight: 600, fontSize: 15 }}>{n.label}</div>
-                  <div style={{ fontSize: 13, color: "var(--muted-fg)" }}>{n.desc}</div>
+                  <div style={{ fontSize: 13, color: "var(--muted-fg)", lineHeight: 1.5 }}>{n.desc}</div>
                 </div>
               </motion.div>
               {i < nodes.length - 1 && <div className="arch-line" />}

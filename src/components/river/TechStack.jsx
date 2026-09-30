@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Features";
-import { Braces, Cpu, HardDrive, Network, Timer, Waypoints } from "lucide-react";
+import { Braces, Cpu, HardDrive, Network, ScrollText, Waypoints } from "lucide-react";
 
 const stack = [
-  { icon: Braces, title: "Rust", desc: "A memory-safe core with explicit ownership and predictable performance." },
-  { icon: Timer, title: "Tokio", desc: "Async runtime powering the TCP server and concurrent client handling." },
-  { icon: Waypoints, title: "Serde", desc: "Structured encoding/decoding for snapshots and internal metadata." },
-  { icon: HardDrive, title: "Bincode", desc: "Compact binary persistence format for fast writes and reloads." },
-  { icon: Network, title: "TCP Sockets", desc: "A real network boundary with backpressure, framing, and timeouts." },
-  { icon: Cpu, title: "HashMap Store", desc: "In-memory keyspace with shared multi-client state and locking strategy." },
+  { icon: Braces, title: "Rust (edition 2024)", desc: "Memory-safe core with explicit ownership; river 0.1.0." },
+  { icon: Network, title: "Tokio (full)", desc: "Async runtime for the TCP listener, per-client tasks, and the 1s TTL cleanup worker." },
+  { icon: Waypoints, title: "Serde + Bincode", desc: "Snapshot encoding for river.db — full-store snapshots via atomic temp-file rename." },
+  { icon: HardDrive, title: "river.db snapshots", desc: "Default persistence file (RIVER_DB_PATH to override). Restore on startup with expiry purge." },
+  { icon: Cpu, title: "Sharded HashMap store", desc: "ConcurrentStore: Vec<RwLock<Shard>> with data + expiration maps. RIVER_SHARDS tunes contention." },
+  { icon: ScrollText, title: "Tracing + Criterion", desc: "Leveled logs via RIVER_LOG; five Criterion benches cover store, protocol, and TTL/persistence." },
 ];
 
 export function TechStack() {
@@ -18,7 +18,7 @@ export function TechStack() {
         <SectionHeader
           eyebrow="Tech Stack"
           title="Boring parts done carefully."
-          subtitle="A small set of primitives—chosen for control, debuggability, and systems learning."
+          subtitle="A small set of primitives — chosen for control, debuggability, and systems learning. Defaults: 127.0.0.1:2007, river.db, auth off."
         />
         <div
           style={{
@@ -64,4 +64,3 @@ export function TechStack() {
     </section>
   );
 }
-
