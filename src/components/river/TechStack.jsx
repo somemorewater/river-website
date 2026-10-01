@@ -3,7 +3,7 @@ import { SectionHeader } from "./Features";
 import { Braces, Cpu, HardDrive, Network, ScrollText, Waypoints } from "lucide-react";
 
 const stack = [
-  { icon: Braces, title: "Rust (edition 2024)", desc: "Memory-safe core with explicit ownership; river 0.1.0." },
+  { icon: Braces, title: "Rust (edition 2024)", desc: "Memory-safe core with explicit ownership; river 1.0.0." },
   { icon: Network, title: "Tokio (full)", desc: "Async runtime for the TCP listener, per-client tasks, and the 1s TTL cleanup worker." },
   { icon: Waypoints, title: "Serde + Bincode", desc: "Snapshot encoding for river.db — full-store snapshots via atomic temp-file rename." },
   { icon: HardDrive, title: "river.db snapshots", desc: "Default persistence file (RIVER_DB_PATH to override). Restore on startup with expiry purge." },

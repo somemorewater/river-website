@@ -31,13 +31,14 @@ export function Navbar() {
               style={{ display: "block" }}
             />
             <span style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>River</span>
-            <span className="river-mono" style={{ fontSize: 11, color: "var(--muted-fg)", marginLeft: 4 }}>v0.1.0</span>
+            <span className="river-mono" style={{ fontSize: 11, color: "var(--muted-fg)", marginLeft: 4 }}>v1.0.0</span>
           </a>
             <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
               <div style={{ display: "none", gap: 24 }} className="nav-links">
                 <a href="#architecture" className="nav-link">Architecture</a>
                 <a href="#features" className="nav-link">Capabilities</a>
                 <a href="#demo" className="nav-link">CLI Demo</a>
+                <a href="#download" className="nav-link">Download</a>
                 <a href="#commands" className="nav-link">Commands</a>
                 <a href="#roadmap" className="nav-link">Build Log</a>
                 <a href="#tradeoffs" className="nav-link">Philosophy</a>

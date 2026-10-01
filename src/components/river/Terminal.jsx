@@ -13,7 +13,7 @@ const PROMPT = "river> ";
 
 const TRANSCRIPT = [
   { kind: "shell", text: "cargo run -- cli", typed: true },
-  { kind: "boot", text: "River CLI v0.1.0" },
+  { kind: "boot", text: "River CLI v1.0.0" },
   { kind: "boot", text: "Connected to 127.0.0.1:2007" },
   { kind: "boot", text: "Type HELP for available commands." },
   { kind: "gap" },

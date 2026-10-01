@@ -17,7 +17,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-eyebrow">v0.1.0 · TCP · Experimental</span>
+          <span className="section-eyebrow">v1.0.0 · Released · TCP</span>
         </motion.div>
 
         <motion.div

@@ -7,6 +7,7 @@ import { Architecture } from "@/components/river/Architecture";
 import { Roadmap } from "@/components/river/Roadmap";
 import { LiveDemo } from "@/components/river/LiveDemo";
 import { Commands } from "@/components/river/Commands";
+import { DownloadRelease } from "@/components/river/Download";
 import { TechStack } from "@/components/river/TechStack";
 import { Footer } from "@/components/river/Footer";
 
@@ -15,6 +16,7 @@ export default function App() {
     <main style={{ minHeight: "100vh", overflowX: "clip" }}>
       <Navbar />
       <Hero />
+      <DownloadRelease />
       <Features />
       <Architecture />
       <LiveDemo />
